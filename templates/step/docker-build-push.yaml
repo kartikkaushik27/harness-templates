@@ -1,0 +1,18 @@
+template:
+  name: Docker Build and Push
+  identifier: docker_build_push
+  versionLabel: "1.0.0"
+  type: Step
+  tags:
+    version: "1.0.0"
+    team: platform
+  spec:
+    type: BuildAndPushDockerRegistry
+    spec:
+      connectorRef: <+input>
+      repo: <+input>
+      tags:
+        - <+pipeline.sequenceId>
+      dockerfile: Dockerfile
+      context: .
+    timeout: 15m
