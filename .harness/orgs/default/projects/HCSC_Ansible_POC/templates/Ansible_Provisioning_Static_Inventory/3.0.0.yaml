@@ -1,0 +1,41 @@
+template:
+  name: Ansible Provisioning Static Inventory
+  type: Pipeline
+  projectIdentifier: HCSC_Ansible_POC
+  orgIdentifier: default
+  spec:
+    stages:
+      - stage:
+          name: Ansible Run
+          identifier: ansible_run
+          type: IACM
+          spec:
+            playbooks:
+              - hcsc_site_project_shared
+            inventories:
+              - hcsc_static_project_shared
+            platform:
+              os: Linux
+              arch: Amd64
+            runtime:
+              type: Cloud
+              spec: {}
+            execution:
+              steps:
+                - step:
+                    type: IACMAnsiblePlugin
+                    name: run
+                    identifier: run
+                    timeout: 1h
+                    spec:
+                      command: run
+          failureStrategies:
+            - onFailure:
+                errors:
+                  - AllErrors
+                action:
+                  type: MarkAsFailure
+          description: ""
+          tags: {}
+  identifier: Ansible_Provisioning_Static_Inventory
+  versionLabel: 3.0.0
