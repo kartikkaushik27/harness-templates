@@ -1,11 +1,12 @@
 template:
   name: Docker Build and Push
   identifier: docker_build_push
-  versionLabel: "1.0.0"
+  versionLabel: "2.0.0"
   type: Step
   tags:
-    version: "1.0.0"
+    version: "2.0.0"
     team: platform
+    breaking-change: "false"
   spec:
     type: BuildAndPushDockerRegistry
     spec:
@@ -13,6 +14,8 @@ template:
       repo: <+input>
       tags:
         - <+pipeline.sequenceId>
-      dockerfile: Dockerfile
-      context: .
-    timeout: 15m
+        - latest
+      dockerfile: <+input>.default(Dockerfile)
+      context: <+input>.default(.)
+      buildArgs: <+input>.optional()
+    timeout: 20m
