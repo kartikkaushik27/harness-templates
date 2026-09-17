@@ -1,6 +1,6 @@
 template:
   name: Docker Build and Push
-  identifier: docker_build_push
+  identifier: docker_build_push_1
   type: Step
   orgIdentifier: CUSTOMER
   tags:
