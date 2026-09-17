@@ -12,7 +12,7 @@ template:
   spec:
     type: BuildAndPushDockerRegistry
     spec:
-      connectorRef: dockerprojectshared
+      connectorRef: <+input>
       repo: <+input>
       tags:
         - <+pipeline.sequenceId>
