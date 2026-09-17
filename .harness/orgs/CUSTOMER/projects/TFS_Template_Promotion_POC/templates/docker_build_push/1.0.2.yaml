@@ -1,0 +1,21 @@
+template:
+  name: Docker Build and Push
+  identifier: docker_build_push
+  type: Step
+  projectIdentifier: TFS_Template_Promotion_POC
+  orgIdentifier: CUSTOMER
+  tags:
+    version: 1.0.0
+    team: platform
+    status: stable
+  spec:
+    type: BuildAndPushDockerRegistry
+    spec:
+      connectorRef: <+input>
+      repo: <+input>
+      tags:
+        - <+pipeline.sequenceId>
+      dockerfile: Dockerfile
+      context: .
+    timeout: 15m
+  versionLabel: 1.0.2
