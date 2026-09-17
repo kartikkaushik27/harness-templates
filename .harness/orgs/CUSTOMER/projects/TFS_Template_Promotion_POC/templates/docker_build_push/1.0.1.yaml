@@ -2,7 +2,6 @@ template:
   name: Docker Build and Push
   identifier: docker_build_push
   type: Step
-  projectIdentifier: TFS_Template_Promotion_POC
   orgIdentifier: CUSTOMER
   tags:
     version: 1.0.0
