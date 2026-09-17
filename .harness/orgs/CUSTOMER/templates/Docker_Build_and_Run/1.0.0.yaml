@@ -1,0 +1,20 @@
+template:
+  name: Docker Build and Run
+  type: Step
+  orgIdentifier: CUSTOMER
+  tags:
+    version: 1.0.0
+    team: platform
+    status: stable
+  spec:
+    type: BuildAndPushDockerRegistry
+    spec:
+      connectorRef: <+input>
+      repo: <+input>
+      tags:
+        - latest
+      dockerfile: Dockerfile
+      context: .
+    timeout: 15m
+  identifier: Docker_Build_and_Run
+  versionLabel: 1.0.0
